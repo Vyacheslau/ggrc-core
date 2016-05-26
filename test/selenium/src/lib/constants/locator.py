@@ -744,7 +744,7 @@ class BaseWidgetGeneric(object):
             .format(self._object_name))
       self.TEXTFIELD = (
           By.CSS_SELECTOR,
-          '#{}_widget .sticky-filter .filter-input'.format(self._object_name))
+          '#{}_widget .sticky-filter .filter-input .input-wide'.format(self._object_name))
       self.BUTTON_SUBMIT = (
           By.CSS_SELECTOR,
           '#{}_widget .sticky-filter .filter-button [type="submit"]'
@@ -763,6 +763,9 @@ class WidgetControls(BaseWidgetGeneric):
   """Locators for control widget"""
   _object_name = "control"
 
+class WidgetAssessments(BaseWidgetGeneric):
+  """Locators for assessment widget"""
+  _object_name = "assessment"
 
 class WidgetProducts(BaseWidgetGeneric):
   """Locators for product widget"""
@@ -846,3 +849,20 @@ class AdminCustomAttributes(object):
   BUTTON_LISTED_MEMBERS_EDIT = (
       By.CSS_SELECTOR,
       '.tree-structure li:nth-child(5) div tbody>tr>td>ul .fa-pencil-square-o')
+
+
+class PaginationControl(object):
+  """Pagination control locators."""
+  PAGINATION_INPUT = (
+    By.CSS_SELECTOR, '.fluid-wrap .ggrc-pagination .pagination .input')
+  ITEMS_PER_PAGE_DROP_DOWN_TOGLE = (
+    By.CSS_SELECTOR, '.fluid-wrap .ggrc-pagination .dropdown-toggle')
+  ITEMS_PER_PAGE_BUTTON_10 = (
+    By.CSS_SELECTOR,
+    '.fluid-wrap .ggrc-pagination .dropdown-menu .btn[data-size="10"]')
+  ITEMS_PER_PAGE_BUTTON_25 = (
+    By.CSS_SELECTOR,
+    '.fluid-wrap .ggrc-pagination .dropdown-menu .btn[data-size="25"]')
+  ITEMS_PER_PAGE_BUTTON_50 = (
+    By.CSS_SELECTOR,
+    '.fluid-wrap .ggrc-pagination .dropdown-menu .btn[data-size="50"]')

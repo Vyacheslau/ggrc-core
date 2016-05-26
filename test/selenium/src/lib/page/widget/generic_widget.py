@@ -10,6 +10,7 @@ import re
 from selenium.common import exceptions
 
 from lib import base
+from lib.base import Pagination
 from lib.page.widget import info_widget
 from lib.constants import locator
 from lib.constants import regex
@@ -113,6 +114,17 @@ class Controls(Widget):
         locator.ObjectWidget.CONTROL_COLUMN_TITLE)
     self.label_owner = base.Label(driver, locator.ObjectWidget.CONTROL_OWNER)
     self.label_state = base.Label(driver, locator.ObjectWidget.COTNROL_STATE)
+
+
+class Assessments(Widget):
+  """Model for the sssessments widget"""
+  _info_pane_cls = info_widget.Assessments
+  _locator_widget = locator.WidgetBar.ASSESSMENTS
+  _locator_filter = locator.WidgetAssessments
+
+  def __init__(self, driver):
+    super(Assessments, self).__init__(driver)
+    self.pagination_control = Pagination(driver)
 
 
 class Issues(Widget):

@@ -13,6 +13,7 @@ from lib import constants
 from lib import exception
 from lib import meta
 from lib import mixin
+from lib.constants.locator import PaginationControl
 from lib.utils import selenium_utils
 
 
@@ -404,6 +405,39 @@ class Filter(Component):
   def clear(self):
     """Clears the query field"""
     self.button_clear.click()
+
+
+class Pagination(Component):
+  """Pagination element"""
+
+  PAGE_COUNT_REGEX = "Page \d* of (\d*)"
+
+  def __init__(self, driver):
+    super(Pagination, self).__init__(driver)
+    self.pagination_input = selenium_utils.get_when_visible(
+      self._driver, PaginationControl.PAGINATION_INPUT)
+    self.items_per_page_drop_down_toggle = selenium_utils.get_when_visible(
+      self._driver, PaginationControl.ITEMS_PER_PAGE_DROP_DOWN_TOGLE)
+    self.items_per_page_buttons = {
+      10: selenium_utils.get_when_invisible(
+        self._driver, PaginationControl.ITEMS_PER_PAGE_BUTTON_10),
+      25: selenium_utils.get_when_invisible(
+        self._driver, PaginationControl.ITEMS_PER_PAGE_BUTTON_25),
+      50: selenium_utils.get_when_invisible(
+        self._driver, PaginationControl.ITEMS_PER_PAGE_BUTTON_50)
+    }
+
+  def select_items_per_page(self, items_count):
+    """Selects items count to show per page"""
+    self.items_per_page_drop_down_toggle.click()
+    self.items_per_page_buttons[items_count].click()
+
+  def get_page_count(self):
+    """Gets displayed page count"""
+    pagination_input_placeholder = self.pagination_input \
+      .get_attribute("placeholder")
+    return int(re.match(self.PAGE_COUNT_REGEX, pagination_input_placeholder) \
+               .group(1))
 
 
 class AbstractPage(Component):
