@@ -3,11 +3,14 @@
 # Created By: jernej@reciprocitylabs.com
 # Maintained By: jernej@reciprocitylabs.com
 
+API = "api"
+AUTHENTICATION = API + "/roles?name__in=Auditor&_=1463991908086"
 DASHBOARD = "dashboard"
 ADMIN_DASHBOARD = "admin"
 PROGRAMS = "programs"
 WORKFLOWS = "workflows"
 AUDITS = "audits"
+AUDIT = AUDITS + "/{0}"
 ASSESSMENTS = "assessments"
 REQUESTS = "requests"
 ISSUES = "issues"
@@ -40,3 +43,4 @@ class Widget(object):
   EVENTS = "#events_list_widget"
   ROLES = "#roles_list_widget"
   PEOPLE = "#people_list_widget"
+  ASSESSMENTS = "#assessment_widget"

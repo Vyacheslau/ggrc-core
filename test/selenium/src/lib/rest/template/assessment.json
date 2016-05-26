@@ -1,0 +1,240 @@
+{
+  "status": "Not Started",
+  "_pending_joins": [
+    {
+      "how": "add",
+      "what": {
+        "name": "Example User",
+        "email": "user@example.com",
+        "contact": null,
+        "owners": null,
+        "custom_attribute_values": [],
+        "related_sources": [],
+        "company": null,
+        "updated_at": "2016-05-19T18:02:04Z",
+        "related_destinations": [],
+        "id": 1,
+        "modified_by": {
+          "id": 1,
+          "href": "/api/people/1",
+          "type": "Person"
+        },
+        "language": null,
+        "created_at": "2016-05-19T18:02:04Z",
+        "object_people": [],
+        "user_roles": [
+          {
+            "id": 1,
+            "href": "/api/user_roles/1",
+            "type": "UserRole"
+          },
+          {
+            "id": 2,
+            "href": "/api/user_roles/2",
+            "type": "UserRole"
+          },
+          {
+            "id": 3,
+            "href": "/api/user_roles/3",
+            "type": "UserRole"
+          },
+          {
+            "id": 4,
+            "href": "/api/user_roles/4",
+            "type": "UserRole"
+          },
+          {
+            "id": 5,
+            "href": "/api/user_roles/5",
+            "type": "UserRole"
+          },
+          {
+            "id": 6,
+            "href": "/api/user_roles/6",
+            "type": "UserRole"
+          },
+          {
+            "id": 7,
+            "href": "/api/user_roles/7",
+            "type": "UserRole"
+          },
+          {
+            "id": 8,
+            "href": "/api/user_roles/8",
+            "type": "UserRole"
+          },
+          {
+            "id": 9,
+            "href": "/api/user_roles/9",
+            "type": "UserRole"
+          },
+          {
+            "id": 10,
+            "href": "/api/user_roles/10",
+            "type": "UserRole"
+          },
+          {
+            "id": 11,
+            "href": "/api/user_roles/11",
+            "type": "UserRole"
+          }
+        ],
+        "context": null,
+        "system_wide_role": "Superuser",
+        "type": "Person",
+        "selfLink": "/api/people/1",
+        "viewLink": "/people/1",
+        "_pending_joins": [],
+        "context_id": null,
+        "href": "/api/people/1"
+      },
+      "through": "related_objects_as_destination",
+      "extra": {
+        "attrs": {
+          "AssigneeType": "Creator,Assessor"
+        }
+      }
+    }
+  ],
+  "custom_attribute_definitions": [],
+  "_mandatory_msg": null,
+  "owners": [],
+  "custom_attributes": {},
+  "_transient": {
+    "object": {
+      "id": 6,
+      "_pending_joins": [],
+      "custom_attribute_values": [],
+      "people": [],
+      "updated_at": "2016-05-20T11:26:27Z",
+      "private": false,
+      "task_group_objects": [],
+      "audits": [],
+      "description": "",
+      "object_folders": [],
+      "documents": [],
+      "modified_by": {
+        "id": 1,
+        "href": "/api/people/1",
+        "type": "Person"
+      },
+      "title": "program10d2784b-607c-486a-82fc-a406a0152bda",
+      "secondary_contact": null,
+      "risk_assessments": [],
+      "object_people": [],
+      "type": "Program",
+      "start_date": null,
+      "viewLink": "/programs/6",
+      "status": "Draft",
+      "related_sources": [],
+      "end_date": null,
+      "workflow_state": null,
+      "os_state": "Modified",
+      "risk_objects": [],
+      "owners": [],
+      "object_documents": [],
+      "related_destinations": [],
+      "slug": "PROGRAM-6",
+      "kind": "Directive",
+      "url": "",
+      "task_groups": [],
+      "notes": "",
+      "reference_url": "",
+      "object_owners": [],
+      "contact": 1,
+      "risks": [],
+      "context": {
+        "id": 9,
+        "href": "/api/contexts/9",
+        "type": "Context"
+      },
+      "created_at": "2016-05-20T11:26:27Z",
+      "selfLink": "/api/programs/6"
+    },
+    "audit": {
+      "status": "Planned",
+      "object_type": "Assessment",
+      "id": 1,
+      "_pending_joins": [],
+      "type": "Audit",
+      "href": "/api/audits/1",
+      "title": "2016: program031ff1da-b539-4ad6-96e9-8d4b0d783598 - Audit 1",
+      "contact": 1,
+      "viewLink": "/audits/1",
+      "custom_attribute_values": [],
+      "people": [],
+      "updated_at": "2016-05-20T11:29:58Z",
+      "secondary_contact": null,
+      "audit_firm": null,
+      "description": "",
+      "object_folders": [],
+      "modified_by": 1,
+      "program": {
+        "id": 11,
+        "href": "/api/programs/11",
+        "type": "Program"
+      },
+      "object_people": [],
+      "start_date": "",
+      "gdrive_evidence_folder": null,
+      "related_sources": [],
+      "end_date": "",
+      "report_end_date": "",
+      "related_destinations": [],
+      "slug": "AUDIT-1",
+      "url": null,
+      "audit_objects": [],
+      "notes": null,
+      "reference_url": null,
+      "context": {
+        "id": 15,
+        "href": "/api/contexts/15",
+        "type": "Context"
+      },
+      "requests": [],
+      "created_at": "2016-05-20T11:29:58Z",
+      "selfLink": "/api/audits/1",
+      "report_start_date": "",
+      "context_id": 15
+    }
+  },
+  "contact": {
+    "id": 1,
+    "href": "/api/people/1",
+    "type": "Person"
+  },
+  "validate_creator": true,
+  "validate_assessor": true,
+  "_transient:title": null,
+  "title": "assssssss",
+  "object": {
+    "id": 6,
+    "href": "/api/programs/6",
+    "type": "Program"
+  },
+  "audit": {
+    "id": 1,
+    "href": "/api/audits/1",
+    "type": "Audit"
+  },
+  "description": "",
+  "send_by_default": false,
+  "Creator": false,
+  "Assessor": false,
+  "Verifier": false,
+  "test_plan": "",
+  "secondary_contact": null,
+  "notes": "",
+  "url": "",
+  "reference_url": "",
+  "slug": "",
+  "design": null,
+  "operationally": null,
+  "context": null,
+  "recipients": ",,",
+  "program": {
+    "id": 11,
+    "href": "/api/programs/11",
+    "type": "Program"
+  }
+}
