@@ -410,7 +410,11 @@ class Filter(Component):
 class Pagination(Component):
   """Pagination element"""
 
-  PAGE_COUNT_REGEX = "Page \d* of (\d*)"
+  PAGE_COUNT_REGEX = "Page (\d*) of (\d*)"
+  FIRST_PAGE = "FIRST_PAGE"
+  PREVIOUS_PAGE = "PREVIOUS_PAGE"
+  NEXT_PAGE = "NEXT_PAGE_BUTTON"
+  LAST_PAGE = "LAST_PAGE_BUTTON"
 
   def __init__(self, driver):
     super(Pagination, self).__init__(driver)
@@ -426,6 +430,16 @@ class Pagination(Component):
       50: selenium_utils.get_when_invisible(
         self._driver, PaginationControl.ITEMS_PER_PAGE_BUTTON_50)
     }
+    self.page_switcher_buttons = {
+      self.FIRST_PAGE: selenium_utils.get_when_visible(
+        self._driver, PaginationControl.FIRST_PAGE_BUTTON),
+      self.PREVIOUS_PAGE: selenium_utils.get_when_visible(
+        self._driver, PaginationControl.PREVIOUS_PAGE_BUTTON),
+      self.NEXT_PAGE: selenium_utils.get_when_visible(
+        self._driver, PaginationControl.NEXT_PAGE_BUTTON),
+      self.LAST_PAGE: selenium_utils.get_when_visible(
+        self._driver, PaginationControl.LAST_PAGE_BUTTON)
+    }
 
   def select_items_per_page(self, items_count):
     """Selects items count to show per page"""
@@ -437,7 +451,19 @@ class Pagination(Component):
     pagination_input_placeholder = self.pagination_input \
       .get_attribute("placeholder")
     return int(re.match(self.PAGE_COUNT_REGEX, pagination_input_placeholder) \
+               .group(2))
+
+  def get_displayed_page_number(self):
+    """Gets displayed page number"""
+    pagination_input_placeholder = self.pagination_input \
+      .get_attribute("placeholder")
+    return int(re.match(self.PAGE_COUNT_REGEX, pagination_input_placeholder) \
                .group(1))
+
+  def switch_page(self, switch_page_btn_name):
+    """Clicks on one of buttons: FIRST_PAGE, PREVIOUS_PAGE, NEXT_PAGE,
+    LAST_PAGE"""
+    self.page_switcher_buttons[switch_page_btn_name].click()
 
 
 class AbstractPage(Component):

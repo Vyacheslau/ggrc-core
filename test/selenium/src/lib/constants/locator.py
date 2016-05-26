@@ -866,3 +866,13 @@ class PaginationControl(object):
   ITEMS_PER_PAGE_BUTTON_50 = (
     By.CSS_SELECTOR,
     '.fluid-wrap .ggrc-pagination .dropdown-menu .btn[data-size="50"]')
+  FIRST_PAGE_BUTTON = (
+    By.CSS_SELECTOR,
+    '.fluid-wrap .ggrc-pagination .pagination .fa-angle-double-left')
+  PREVIOUS_PAGE_BUTTON = (
+    By.CSS_SELECTOR, '.fluid-wrap .ggrc-pagination .pagination .fa-angle-left')
+  NEXT_PAGE_BUTTON = (
+    By.CSS_SELECTOR, '.fluid-wrap .ggrc-pagination .pagination .fa-angle-right')
+  LAST_PAGE_BUTTON = (
+    By.CSS_SELECTOR,
+    '.fluid-wrap .ggrc-pagination .pagination .fa-angle-double-right')
