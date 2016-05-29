@@ -2,6 +2,9 @@
 # Licensed under http://www.apache.org/licenses/LICENSE-2.0 <see LICENSE file>
 # Created By: jernej@reciprocitylabs.com
 # Maintained By: jernej@reciprocitylabs.com
+
+# pylint: disable=too-few-public-methods
+
 """Module for base classes"""
 
 import re
@@ -92,6 +95,7 @@ class Label(Element):
 
 
 class RichTextInputField(Element):
+  """Rich text input field element"""
   def __init__(self, driver, locator):
     """
     Args:
@@ -144,6 +148,7 @@ class TextFilterDropdown(Element):
     self.text_to_filter = None
 
   def _filter_results(self, text):
+    """Types text in Filter dropdown"""
     self.text_to_filter = text
 
     self.element.click()
@@ -411,7 +416,7 @@ class Filter(Component):
 class Pagination(Component):
   """Pagination element"""
 
-  PAGE_COUNT_REGEX = "Page (\d*) of (\d*)"
+  PAGE_COUNT_REGEX = r"Page (\d*) of (\d*)"
   FIRST_PAGE = "FIRST_PAGE"
   PREVIOUS_PAGE = "PREVIOUS_PAGE"
   NEXT_PAGE = "NEXT_PAGE_BUTTON"
@@ -477,6 +482,7 @@ class AbstractPage(Component):
     self.url = driver.current_url
 
   def navigate_to(self, custom_url=None):
+    """Navigates to custom url"""
     url_to_use = self.url if custom_url is None else custom_url
 
     if self._driver.current_url != url_to_use:

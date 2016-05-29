@@ -63,6 +63,7 @@ class Dashboard(object):
 class LhnMenu(object):
   """Locators for the menu in header"""
   class _Locator(object):
+    """LhnMenu's inner Locator representation."""
     @staticmethod
     def get_accordion_button(label):
       return (By.CSS_SELECTOR, '[data-model-name="{}"]>a'.format(label))
@@ -496,6 +497,7 @@ class ObjectWidget(object):
 
 
 class ModalDeleteObject(object):
+  """Delete object modal window locators"""
   MODAL_TITLE = (By.CSS_SELECTOR, '.modal-header>h2')
   CONFIRMATION_TEXT = (By.CSS_SELECTOR, '.modal-body>div>p')
   OBJECT_TITLE = (By.CSS_SELECTOR, '.modal-body>div>p>span')

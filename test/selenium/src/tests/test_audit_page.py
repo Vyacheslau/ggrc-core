@@ -3,15 +3,16 @@
 # Created By: Viachaslau_Karachun@epam.com
 # Maintained By: Viachaslau_Karachun@epam.com
 
-"""Tests Audit object"""
-# pylint: disable=no-self-use
 # pylint: disable=invalid-name
-# pylint: disable=too-few-public-methods
-# pylint: disable=unused-argument
+# pylint: disable=no-self-use
+# pylint: disable=too-many-arguments
+
+"""Tests Audit object"""
+
 import math
 import random
 
-import pytest  # pylint: disable=import-error
+import pytest
 
 from lib import base, environment
 from lib.base import Pagination
@@ -49,7 +50,7 @@ class TestAuditPage(base.Test):
 
   @pytest.mark.parametrize("expected_items_count", [10, 25, 50])
   @pytest.mark.smoke_tests
-  def test_assessments_widget_shows_correct_items_count_per_page\
+  def test_assessments_widget_shows_correct_items_count_per_page \
       (self, selenium, rest_create_audit, rest_create_control,
        expected_items_count):
     """Checks if assessments widget shows correct items count per page."""
@@ -111,7 +112,7 @@ class TestAuditPage(base.Test):
 
     assessments_widget.pagination_control.switch_page(button_name)
 
-    actual_page_number = assessments_widget.pagination_control.\
+    actual_page_number = assessments_widget.pagination_control. \
       get_displayed_page_number()
 
     assert expected_page_number == actual_page_number

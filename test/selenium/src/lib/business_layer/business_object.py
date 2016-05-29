@@ -1,3 +1,5 @@
+"""Business entities representation."""
+
 class BusinessObject(dict):
   """Model representing business entities used for REST queries."""
 

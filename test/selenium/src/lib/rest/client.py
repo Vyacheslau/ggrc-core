@@ -48,6 +48,7 @@ class RestClient(object):
     self.session = cookie["session"].value
 
   def get_headers(self):
+    """Returns prepared header for HTTP call."""
     headers = self.BASIC_HEADERS
     if not self.session:
       self.init_session()
@@ -56,24 +57,25 @@ class RestClient(object):
 
   def create_objects(self, obj_type, count=1, title_postfix=None, **kwargs):
     """The method sends HTTP request for objects creation via REST API."""
-    request_body = self.generate_body_by_template(count=count,
-                                                  template_name=obj_type,
-                                                  title_postfix=title_postfix,
-                                                  **kwargs)
+    request_body = generate_body_by_template(count=count,
+                                             template_name=obj_type,
+                                             title_postfix=title_postfix,
+                                             **kwargs)
     headers = self.get_headers()
     response = requests.post(url=self.url, data=request_body, headers=headers)
     return response
 
-  def generate_body_by_template(self, count, template_name, title_postfix=None,
-                                **kwargs):
-    """The function generates list of objects based on object type  (assessment,
-    control, etc) from json templates."""
-    objects = list()
-    for _ in xrange(count):
-      obj_title = append_random_string(template_name)
-      if title_postfix:
-        obj_title += title_postfix
-      objects.append(
-        TemplateProvider.get_template_as_dict(template_name, title=obj_title,
-                                              **kwargs))
-    return json.dumps(objects)
+
+def generate_body_by_template(count, template_name, title_postfix=None,
+                              **kwargs):
+  """The function generates list of objects based on object type  (assessment,
+  control, etc) from json templates."""
+  objects = list()
+  for _ in xrange(count):
+    obj_title = append_random_string(template_name)
+    if title_postfix:
+      obj_title += title_postfix
+    objects.append(
+      TemplateProvider.get_template_as_dict(template_name, title=obj_title,
+                                            **kwargs))
+  return json.dumps(objects)

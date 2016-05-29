@@ -15,7 +15,8 @@ from lib.constants import url
 from lib.rest.client import RestClient
 
 
-class RestService(object):
+class BaseService(object):
+  """Base class for business layer's services objects."""
   def __init__(self, endpoint):
     self.client = RestClient(endpoint)
 
@@ -33,7 +34,7 @@ class RestService(object):
     return business_objects_list
 
 
-class ControlsService(RestService):
+class ControlsService(BaseService):
   """The class incapsulates logic for working with business entity Control."""
 
   def __init__(self):
@@ -44,7 +45,7 @@ class ControlsService(RestService):
       self.client.create_objects("control", count=count))
 
 
-class ProgramsService(RestService):
+class ProgramsService(BaseService):
   """The class incapsulates logic for working with business entity Program."""
 
   def __init__(self):
@@ -55,7 +56,7 @@ class ProgramsService(RestService):
       self.client.create_objects("program", count=count))
 
 
-class AuditsService(RestService):
+class AuditsService(BaseService):
   """The class incapsulates logic for working with business entity Audit."""
 
   def __init__(self):
@@ -66,7 +67,7 @@ class AuditsService(RestService):
       self.client.create_objects("audit", count=count, program=program))
 
 
-class AssessmentsService(RestService):
+class AssessmentsService(BaseService):
   """The class incapsulates logic for working with business entity
   Assessment."""
 

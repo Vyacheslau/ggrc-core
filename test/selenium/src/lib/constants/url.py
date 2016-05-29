@@ -3,6 +3,10 @@
 # Created By: jernej@reciprocitylabs.com
 # Maintained By: jernej@reciprocitylabs.com
 
+# pylint: disable=too-few-public-methods
+
+"""App enpoints constants"""
+
 API = "api"
 AUTHENTICATION = API + "/roles?name__in=Auditor&_=1463991908086"
 DASHBOARD = "dashboard"
@@ -38,6 +42,7 @@ THREATS = "threats"
 
 
 class Widget(object):
+  """Widget anchors"""
   INFO = "#info_widget"
   CUSTOM_ATTRIBUTES = "#custom_attribute_widget"
   EVENTS = "#events_list_widget"

@@ -3,6 +3,8 @@
 # Created By: jernej@reciprocitylabs.com
 # Maintained By: jernej@reciprocitylabs.com
 
+# pylint: disable=too-few-public-methods
+
 """Models for widgets other than the info widget"""
 
 import re
