@@ -16,21 +16,20 @@ import pytest
 
 from lib import base, environment
 from lib.base import Pagination
-from lib.business_layer.rest_service import AssessmentsService
+from lib.service.rest_service import AssessmentsService
 from lib.constants import url
 from lib.page.widget import generic_widget
 
 
 class TestAuditPage(base.Test):
-  """Tests Audit page."""
+  """Tests Audit page"""
 
   ITEMS_PER_PAGE = 10
 
   @pytest.mark.smoke_tests
-  def test_assessments_widget_has_correct_page_count(self, selenium,
-                                                     rest_create_audit,
-                                                     rest_create_control):
-    """Checks if assessments widget shows correct page count."""
+  def test_assessments_widget_has_correct_page_count(
+    self, selenium, rest_create_audit, rest_create_control):
+    """Checks if assessments widget shows correct page count"""
     assessments_count = random.randint(1, 100)
     expected_page_count = int(math.ceil(
       float(assessments_count) / self.ITEMS_PER_PAGE))
@@ -50,10 +49,10 @@ class TestAuditPage(base.Test):
 
   @pytest.mark.parametrize("expected_items_count", [10, 25, 50])
   @pytest.mark.smoke_tests
-  def test_assessments_widget_shows_correct_items_count_per_page \
-      (self, selenium, rest_create_audit, rest_create_control,
-       expected_items_count):
-    """Checks if assessments widget shows correct items count per page."""
+  def test_assessments_widget_shows_correct_items_count_per_page(
+    self, selenium, rest_create_audit, rest_create_control,
+    expected_items_count):
+    """Checks if assessments widget shows correct items count per page"""
     assessments_count = expected_items_count + 1
     AssessmentsService().create_assessments(count=assessments_count,
                                             obj=rest_create_control,
@@ -76,7 +75,7 @@ class TestAuditPage(base.Test):
   def test_switch_page_forward_buttons_work_correct_on_assessments_widget(
     self, selenium, rest_create_audit, rest_create_control,
     assessments_count, button_name, expected_page_number):
-    """Checks that switch page forward buttons (NEXT_PAGE, LAST_PAGE)."""
+    """Checks that switch page forward buttons (NEXT_PAGE, LAST_PAGE)"""
     AssessmentsService().create_assessments(count=assessments_count,
                                             obj=rest_create_control,
                                             audit=rest_create_audit)
@@ -87,8 +86,8 @@ class TestAuditPage(base.Test):
       self.ITEMS_PER_PAGE)
     assessments_widget.pagination_control.switch_page(button_name)
 
-    actual_page_number = assessments_widget.pagination_control. \
-      get_displayed_page_number()
+    actual_page_number = (assessments_widget.pagination_control.
+                          get_displayed_page_number())
 
     assert expected_page_number == actual_page_number
 
@@ -99,7 +98,7 @@ class TestAuditPage(base.Test):
   def test_switch_page_back_buttons_work_correct_on_assessments_widget(
     self, selenium, rest_create_audit, rest_create_control, assessments_count,
     button_name, expected_page_number):
-    """Checks that switch page back buttons (PREVIOUS_PAGE, FIRST_PAGE)."""
+    """Checks that switch page back buttons (PREVIOUS_PAGE, FIRST_PAGE)"""
     AssessmentsService().create_assessments(count=assessments_count,
                                             obj=rest_create_control,
                                             audit=rest_create_audit)
@@ -112,7 +111,6 @@ class TestAuditPage(base.Test):
 
     assessments_widget.pagination_control.switch_page(button_name)
 
-    actual_page_number = assessments_widget.pagination_control. \
-      get_displayed_page_number()
-
+    actual_page_number = (assessments_widget.pagination_control.
+                          get_displayed_page_number())
     assert expected_page_number == actual_page_number

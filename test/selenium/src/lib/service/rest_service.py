@@ -6,39 +6,32 @@
 # pylint: disable=too-few-public-methods
 
 """The module provides API for creating and manipulating GGRC's business
-objects via REST."""
+objects via REST"""
 
 import json
 
-from lib.business_layer.business_object import BusinessObject
+from lib.service.rest.client import RestClient
 from lib.constants import url
-from lib.rest.client import RestClient
 
 
 class BaseService(object):
-  """Base class for business layer's services objects."""
-  def __init__(self, endpoint):
-    self.client = RestClient(endpoint)
+  """Base class for business layer's services objects"""
+  def __init__(self):
+    self.client = RestClient(self.ENDPOINT)
 
   @staticmethod
   def get_list_of_created_objects(response):
-    """The function forms the list of business entities from response."""
-    business_objects_list = list()
-    for object_element in json.loads(response.text):
-      object_key = object_element[1].keys()[0]
-      created_object = object_element[1][object_key]
-      business_object = BusinessObject(created_object["id"],
-                                       created_object["selfLink"],
-                                       created_object["type"])
-      business_objects_list.append(business_object)
-    return business_objects_list
+    """The function forms the list of business entities from response"""
+    def minimize(object_element):
+      """Minimize response json data to request ready format"""
+      obj = object_element[1].values()[0]
+      return {"id": obj["id"], "href": obj["selfLink"], "type": obj["type"]}
+    return [minimize(object_element=x) for x in json.loads(response.text)]
 
 
 class ControlsService(BaseService):
-  """The class incapsulates logic for working with business entity Control."""
-
-  def __init__(self):
-    super(ControlsService, self).__init__(url.CONTROLS)
+  """The class incapsulates logic for working with business entity Control"""
+  ENDPOINT = url.CONTROLS
 
   def create_controls(self, count):
     return self.get_list_of_created_objects(
@@ -46,10 +39,8 @@ class ControlsService(BaseService):
 
 
 class ProgramsService(BaseService):
-  """The class incapsulates logic for working with business entity Program."""
-
-  def __init__(self):
-    super(ProgramsService, self).__init__(url.PROGRAMS)
+  """The class incapsulates logic for working with business entity Program"""
+  ENDPOINT = url.PROGRAMS
 
   def create_programs(self, count):
     return self.get_list_of_created_objects(
@@ -57,10 +48,8 @@ class ProgramsService(BaseService):
 
 
 class AuditsService(BaseService):
-  """The class incapsulates logic for working with business entity Audit."""
-
-  def __init__(self):
-    super(AuditsService, self).__init__(url.AUDITS)
+  """The class incapsulates logic for working with business entity Audit"""
+  ENDPOINT = url.AUDITS
 
   def create_audits(self, count, program):
     return self.get_list_of_created_objects(
@@ -69,10 +58,8 @@ class AuditsService(BaseService):
 
 class AssessmentsService(BaseService):
   """The class incapsulates logic for working with business entity
-  Assessment."""
-
-  def __init__(self):
-    super(AssessmentsService, self).__init__(url.ASSESSMENTS)
+  Assessment"""
+  ENDPOINT = url.ASSESSMENTS
 
   def create_assessments(self, count, obj, audit):
     return self.get_list_of_created_objects(

@@ -5,7 +5,7 @@
 
 # pylint: disable=too-few-public-methods
 
-"""The module contains functionality for working with json templates."""
+"""The module contains functionality for working with json templates"""
 
 import copy
 import json
@@ -13,19 +13,19 @@ import os
 
 
 class TemplateProvider(object):
-  """The class proccesses json templates."""
+  """The class proccesses json templates"""
   RELATIVE_PATH_TEMPLATE = "template/{0}.json"
   parsed_data = dict()
 
   @staticmethod
   def get_template_as_dict(obj_type, **kwargs):
-    """The method returns object representation based on json template."""
+    """The method returns object representation based on json template"""
     try:
       obj = copy.deepcopy(TemplateProvider.parsed_data[obj_type])
     except KeyError:
-      path = os.path.join(os.path.dirname(__file__),
-                          TemplateProvider.RELATIVE_PATH_TEMPLATE.format(
-                            obj_type))
+      path = os.path.join(
+        os.path.dirname(__file__),
+        TemplateProvider.RELATIVE_PATH_TEMPLATE.format(obj_type))
       with open(path) as json_file:
         json_data = json_file.read()
       data = json.loads(json_data)

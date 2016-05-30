@@ -455,17 +455,19 @@ class Pagination(Component):
 
   def get_page_count(self):
     """Gets displayed page count"""
-    pagination_input_placeholder = self.pagination_input \
-      .get_attribute("placeholder")
-    return int(re.match(self.PAGE_COUNT_REGEX, pagination_input_placeholder) \
-               .group(2))
+    return self._get_pagination_number(is_current=False)
 
   def get_displayed_page_number(self):
     """Gets displayed page number"""
-    pagination_input_placeholder = self.pagination_input \
-      .get_attribute("placeholder")
-    return int(re.match(self.PAGE_COUNT_REGEX, pagination_input_placeholder) \
-               .group(1))
+    return self._get_pagination_number(is_current=True)
+
+  def _get_pagination_number(self, is_current):
+    index = 1 if is_current else 2
+    return int(re.match(self.PAGE_COUNT_REGEX,
+                        self._get_pagination_placeholder()).group(index))
+
+  def _get_pagination_placeholder(self):
+    return self.pagination_input.get_attribute("placeholder")
 
   def switch_page(self, switch_page_btn_name):
     """Clicks on one of buttons: FIRST_PAGE, PREVIOUS_PAGE, NEXT_PAGE,

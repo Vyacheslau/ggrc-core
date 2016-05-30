@@ -8,7 +8,6 @@
 """App enpoints constants"""
 
 API = "api"
-AUTHENTICATION = API + "/roles?name__in=Auditor&_=1463991908086"
 DASHBOARD = "dashboard"
 ADMIN_DASHBOARD = "admin"
 PROGRAMS = "programs"
