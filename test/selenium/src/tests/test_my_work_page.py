@@ -16,7 +16,6 @@ from lib import exception
 from lib.page import dashboard
 from lib.page import lhn
 from lib.page.widget import generic_widget
-from lib.constants.test import batch
 from lib.utils import conftest_utils
 from lib.utils import selenium_utils
 
@@ -33,7 +32,7 @@ class TestMyWorkPage(base.Test):
         .select_controls()
 
     try:
-      for _ in xrange(batch.BATTERY):
+      for _ in xrange(controls_widget.member_count):
         controls_widget\
             .select_nth_member(0)\
             .press_object_settings()\
