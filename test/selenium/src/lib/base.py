@@ -425,33 +425,33 @@ class Pagination(Component):
   def __init__(self, driver):
     super(Pagination, self).__init__(driver)
     self.pagination_input = selenium_utils.get_when_visible(
-      self._driver, PaginationControl.PAGINATION_INPUT)
+        self._driver, PaginationControl.PAGINATION_INPUT)
     self.items_per_page_drop_down_toggle = selenium_utils.get_when_visible(
-      self._driver, PaginationControl.ITEMS_PER_PAGE_DROP_DOWN_TOGLE)
+        self._driver, PaginationControl.ITEMS_PER_PAGE_DROP_DOWN_TOGLE)
     self.items_per_page_buttons = {
-      10: selenium_utils.get_when_invisible(
-        self._driver, PaginationControl.ITEMS_PER_PAGE_BUTTON_10),
-      25: selenium_utils.get_when_invisible(
-        self._driver, PaginationControl.ITEMS_PER_PAGE_BUTTON_25),
-      50: selenium_utils.get_when_invisible(
-        self._driver, PaginationControl.ITEMS_PER_PAGE_BUTTON_50)
+        10: selenium_utils.get_when_invisible(
+            self._driver, PaginationControl.ITEMS_PER_PAGE_BUTTON_10),
+        25: selenium_utils.get_when_invisible(
+            self._driver, PaginationControl.ITEMS_PER_PAGE_BUTTON_25),
+        50: selenium_utils.get_when_invisible(
+            self._driver, PaginationControl.ITEMS_PER_PAGE_BUTTON_50)
     }
     self.page_switcher_buttons = {
-      self.FIRST_PAGE: selenium_utils.get_when_visible(
-        self._driver, PaginationControl.FIRST_PAGE_BUTTON),
-      self.PREVIOUS_PAGE: selenium_utils.get_when_visible(
-        self._driver, PaginationControl.PREVIOUS_PAGE_BUTTON),
-      self.NEXT_PAGE: selenium_utils.get_when_visible(
-        self._driver, PaginationControl.NEXT_PAGE_BUTTON),
-      self.LAST_PAGE: selenium_utils.get_when_visible(
-        self._driver, PaginationControl.LAST_PAGE_BUTTON)
+        self.FIRST_PAGE: selenium_utils.get_when_visible(
+            self._driver, PaginationControl.FIRST_PAGE_BUTTON),
+        self.PREVIOUS_PAGE: selenium_utils.get_when_visible(
+            self._driver, PaginationControl.PREVIOUS_PAGE_BUTTON),
+        self.NEXT_PAGE: selenium_utils.get_when_visible(
+            self._driver, PaginationControl.NEXT_PAGE_BUTTON),
+        self.LAST_PAGE: selenium_utils.get_when_visible(
+            self._driver, PaginationControl.LAST_PAGE_BUTTON)
     }
 
   def select_items_per_page(self, items_count):
     """Selects items count to show per page"""
     self.items_per_page_drop_down_toggle.click()
     self.items_per_page_buttons[items_count].click()
-    time.sleep(3) #TO DO add waiter implementation
+    time.sleep(3)  # TODO add waiter implementation
 
   def get_page_count(self):
     """Gets displayed page count"""

@@ -66,8 +66,8 @@ def generate_body_by_template(count, template_name, title_postfix=None,
     obj_title = append_random_string(template_name)
     if title_postfix is not None:
       obj_title += title_postfix
-    return TemplateProvider.get_template_as_dict(template_name, title=obj_title,
-                                                 **kwargs)
+    return TemplateProvider.get_template_as_dict(
+        template_name, title=obj_title, **kwargs)
 
   objects = [upgrade_template(template_name=template_name,
                               title_postfix=title_postfix,

@@ -24,8 +24,8 @@ class TemplateProvider(object):
       obj = copy.deepcopy(TemplateProvider.parsed_data[obj_type])
     except KeyError:
       path = os.path.join(
-        os.path.dirname(__file__),
-        TemplateProvider.RELATIVE_PATH_TEMPLATE.format(obj_type))
+          os.path.dirname(__file__),
+          TemplateProvider.RELATIVE_PATH_TEMPLATE.format(obj_type))
       with open(path) as json_file:
         json_data = json_file.read()
       data = json.loads(json_data)

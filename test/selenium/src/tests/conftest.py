@@ -50,7 +50,7 @@ def custom_program_attribute(selenium):
   """Creates a custom attribute for a program object"""
   # pylint: disable=redefined-outer-name
   cust_attr_widget = conftest_utils.create_custom_program_attribute(
-    selenium)
+      selenium)
   yield cust_attr_widget
   # todo: delete this custom attribute
 
@@ -63,7 +63,7 @@ def new_control(selenium):
       lib.page.widget.Controls
   """
   control_info_page = conftest_utils.create_lhn_object(
-    selenium, constants.element.Lhn.CONTROLS)
+      selenium, constants.element.Lhn.CONTROLS)
   yield control_info_page
 
 
@@ -73,7 +73,7 @@ def new_program(selenium, new_control):
   saved modal"""
   # pylint: disable=redefined-outer-name
   modal = conftest_utils.get_lhn_accordion(
-    selenium, constants.element.Lhn.PROGRAMS).create_new()
+      selenium, constants.element.Lhn.PROGRAMS).create_new()
   test_utils.ModalNewPrograms.enter_test_data(modal)
   modal.save_and_close()
   program_info_page = info_widget.Programs(selenium)
@@ -88,7 +88,7 @@ def new_org_group(selenium):
       lib.page.widget.OrgGroupInfo
   """
   org_group_page = conftest_utils.create_lhn_object(
-    selenium, constants.element.Lhn.ORG_GROUPS)
+      selenium, constants.element.Lhn.ORG_GROUPS)
   yield org_group_page
 
 
@@ -100,7 +100,7 @@ def new_risk(selenium):
       lib.page.widget.Risks
   """
   risk_page = conftest_utils.create_lhn_object(
-    selenium, constants.element.Lhn.RISKS)
+      selenium, constants.element.Lhn.RISKS)
   yield risk_page
 
 
@@ -112,7 +112,7 @@ def new_request(selenium):
       lib.page.widget.Requests
   """
   request_page = conftest_utils.create_lhn_object(
-    selenium, constants.element.Lhn.REQUESTS)
+      selenium, constants.element.Lhn.REQUESTS)
   yield request_page
 
 
@@ -124,7 +124,7 @@ def new_issue(selenium):
       lib.page.widget.IssueInfo
   """
   issue_info_page = conftest_utils.create_lhn_object(
-    selenium, constants.element.Lhn.ISSUES)
+      selenium, constants.element.Lhn.ISSUES)
   yield issue_info_page
 
 
@@ -136,7 +136,7 @@ def new_process(selenium):
       lib.page.widget.Processes
   """
   process_info_page = conftest_utils.create_lhn_object(
-    selenium, constants.element.Lhn.PROCESSES)
+      selenium, constants.element.Lhn.PROCESSES)
   yield process_info_page
 
 
@@ -148,7 +148,7 @@ def new_data_asset(selenium):
       lib.page.widget.DataAssetInfo
   """
   data_asset_page = conftest_utils.create_lhn_object(
-    selenium, constants.element.Lhn.DATA_ASSETS)
+      selenium, constants.element.Lhn.DATA_ASSETS)
   yield data_asset_page
 
 
@@ -160,7 +160,7 @@ def new_system(selenium):
       lib.page.widget.IssueInfo
   """
   system_page = conftest_utils.create_lhn_object(
-    selenium, constants.element.Lhn.SYSTEMS)
+      selenium, constants.element.Lhn.SYSTEMS)
   yield system_page
 
 
@@ -172,7 +172,7 @@ def new_product(selenium):
       lib.page.widget.Product
   """
   product_page = conftest_utils.create_lhn_object(
-    selenium, constants.element.Lhn.PRODUCTS)
+      selenium, constants.element.Lhn.PRODUCTS)
   yield product_page
 
 
@@ -184,7 +184,7 @@ def new_project(selenium):
       lib.page.widget.ProjectInfo
   """
   project_page = conftest_utils.create_lhn_object(
-    selenium, constants.element.Lhn.PROJECTS)
+      selenium, constants.element.Lhn.PROJECTS)
   yield project_page
 
 
@@ -195,7 +195,7 @@ def battery_of_controls(selenium):
 
   for _ in xrange(batch.BATTERY):
     controls.append(conftest_utils.create_lhn_object(
-      selenium, constants.element.Lhn.CONTROLS))
+        selenium, constants.element.Lhn.CONTROLS))
 
   yield controls
 

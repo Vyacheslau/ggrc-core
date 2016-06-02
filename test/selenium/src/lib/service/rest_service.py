@@ -35,7 +35,7 @@ class ControlsService(BaseService):
 
   def create_controls(self, count):
     return self.get_list_of_created_objects(
-      self.client.create_objects("control", count=count))
+        self.client.create_objects("control", count=count))
 
 
 class ProgramsService(BaseService):
@@ -44,7 +44,7 @@ class ProgramsService(BaseService):
 
   def create_programs(self, count):
     return self.get_list_of_created_objects(
-      self.client.create_objects("program", count=count))
+        self.client.create_objects("program", count=count))
 
 
 class AuditsService(BaseService):
@@ -53,7 +53,7 @@ class AuditsService(BaseService):
 
   def create_audits(self, count, program):
     return self.get_list_of_created_objects(
-      self.client.create_objects("audit", count=count, program=program))
+        self.client.create_objects("audit", count=count, program=program))
 
 
 class AssessmentsService(BaseService):
@@ -63,5 +63,5 @@ class AssessmentsService(BaseService):
 
   def create_assessments(self, count, obj, audit):
     return self.get_list_of_created_objects(
-      self.client.create_objects("assessment", count=count, object=obj,
-                                 audit=audit))
+        self.client.create_objects("assessment", count=count, object=obj,
+                                   audit=audit))

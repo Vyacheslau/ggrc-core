@@ -746,7 +746,8 @@ class BaseWidgetGeneric(object):
             .format(self._object_name))
       self.TEXTFIELD = (
           By.CSS_SELECTOR,
-          '#{}_widget .sticky-filter .filter-input .input-wide'.format(self._object_name))
+          '#{}_widget .sticky-filter .filter-input .input-wide'
+            .format(self._object_name))
       self.BUTTON_SUBMIT = (
           By.CSS_SELECTOR,
           '#{}_widget .sticky-filter .filter-button [type="submit"]'
@@ -765,9 +766,11 @@ class WidgetControls(BaseWidgetGeneric):
   """Locators for control widget"""
   _object_name = "control"
 
+
 class WidgetAssessments(BaseWidgetGeneric):
   """Locators for assessment widget"""
   _object_name = "assessment"
+
 
 class WidgetProducts(BaseWidgetGeneric):
   """Locators for product widget"""
@@ -856,25 +859,27 @@ class AdminCustomAttributes(object):
 class PaginationControl(object):
   """Pagination control locators."""
   PAGINATION_INPUT = (
-    By.CSS_SELECTOR, '.fluid-wrap .ggrc-pagination .pagination .input')
+      By.CSS_SELECTOR, '.fluid-wrap .ggrc-pagination .pagination .input')
   ITEMS_PER_PAGE_DROP_DOWN_TOGLE = (
-    By.CSS_SELECTOR, '.fluid-wrap .ggrc-pagination .dropdown-toggle')
+      By.CSS_SELECTOR, '.fluid-wrap .ggrc-pagination .dropdown-toggle')
   ITEMS_PER_PAGE_BUTTON_10 = (
-    By.CSS_SELECTOR,
-    '.fluid-wrap .ggrc-pagination .dropdown-menu .btn[data-size="10"]')
+      By.CSS_SELECTOR,
+      '.fluid-wrap .ggrc-pagination .dropdown-menu .btn[data-size="10"]')
   ITEMS_PER_PAGE_BUTTON_25 = (
-    By.CSS_SELECTOR,
-    '.fluid-wrap .ggrc-pagination .dropdown-menu .btn[data-size="25"]')
+      By.CSS_SELECTOR,
+      '.fluid-wrap .ggrc-pagination .dropdown-menu .btn[data-size="25"]')
   ITEMS_PER_PAGE_BUTTON_50 = (
-    By.CSS_SELECTOR,
-    '.fluid-wrap .ggrc-pagination .dropdown-menu .btn[data-size="50"]')
+      By.CSS_SELECTOR,
+      '.fluid-wrap .ggrc-pagination .dropdown-menu .btn[data-size="50"]')
   FIRST_PAGE_BUTTON = (
-    By.CSS_SELECTOR,
-    '.fluid-wrap .ggrc-pagination .pagination .fa-angle-double-left')
+      By.CSS_SELECTOR,
+      '.fluid-wrap .ggrc-pagination .pagination .fa-angle-double-left')
   PREVIOUS_PAGE_BUTTON = (
-    By.CSS_SELECTOR, '.fluid-wrap .ggrc-pagination .pagination .fa-angle-left')
+      By.CSS_SELECTOR,
+      '.fluid-wrap .ggrc-pagination .pagination .fa-angle-left')
   NEXT_PAGE_BUTTON = (
-    By.CSS_SELECTOR, '.fluid-wrap .ggrc-pagination .pagination .fa-angle-right')
+      By.CSS_SELECTOR,
+      '.fluid-wrap .ggrc-pagination .pagination .fa-angle-right')
   LAST_PAGE_BUTTON = (
-    By.CSS_SELECTOR,
-    '.fluid-wrap .ggrc-pagination .pagination .fa-angle-double-right')
+      By.CSS_SELECTOR,
+      '.fluid-wrap .ggrc-pagination .pagination .fa-angle-double-right')
