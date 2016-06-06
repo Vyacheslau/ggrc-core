@@ -21,7 +21,7 @@ class BaseService(object):
 
   @staticmethod
   def get_list_of_created_objects(response):
-    """The function forms the list of business entities from response"""
+    """Forms the list of business entities from response"""
     def minimize(object_element):
       """Minimize response json data to request ready format"""
       obj = object_element[1].values()[0]
@@ -30,7 +30,7 @@ class BaseService(object):
 
 
 class ControlsService(BaseService):
-  """The class incapsulates logic for working with business entity Control"""
+  """Incapsulates logic for working with business entity Control"""
   ENDPOINT = url.CONTROLS
 
   def create_controls(self, count):
@@ -39,7 +39,7 @@ class ControlsService(BaseService):
 
 
 class ProgramsService(BaseService):
-  """The class incapsulates logic for working with business entity Program"""
+  """Incapsulates logic for working with business entity Program"""
   ENDPOINT = url.PROGRAMS
 
   def create_programs(self, count):
@@ -48,7 +48,7 @@ class ProgramsService(BaseService):
 
 
 class AuditsService(BaseService):
-  """The class incapsulates logic for working with business entity Audit"""
+  """Incapsulates logic for working with business entity Audit"""
   ENDPOINT = url.AUDITS
 
   def create_audits(self, count, program):
@@ -57,8 +57,7 @@ class AuditsService(BaseService):
 
 
 class AssessmentsService(BaseService):
-  """The class incapsulates logic for working with business entity
-  Assessment"""
+  """Incapsulates logic for working with business entity Assessment"""
   ENDPOINT = url.ASSESSMENTS
 
   def create_assessments(self, count, obj, audit):

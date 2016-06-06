@@ -19,25 +19,25 @@ from lib.utils.test_utils import append_random_string
 
 
 class RestClient(object):
-  """The class used for HTTP interactions with App's REST API"""
+  """Used for HTTP interactions with App's REST API"""
   BASIC_HEADERS = {'X-Requested-By': 'gGRC',
                    'Content-Type': 'application/json',
                    'Accept-Encoding': 'gzip, deflate'}
-  AUTH = url.API + "/roles?name__in=Auditor&_=1463991908086"
+  AUTH = url.API + "/roles?name__in=Auditor"
 
   def __init__(self, endpoint):
     self.url = "{0}{1}/{2}".format(environment.APP_URL, url.API, endpoint)
     self.session = None
 
   def init_session(self):
-    """Returns authorization cookie value"""
+    """Return authorization cookie value"""
     response = requests.get(environment.APP_URL + self.AUTH)
     cookie = Cookie.SimpleCookie()
     cookie.load(response.headers["Set-Cookie"])
     self.session = cookie["session"].value
 
   def get_headers(self):
-    """Returns prepared header for HTTP call"""
+    """Return prepared header for HTTP call"""
     headers = self.BASIC_HEADERS
     if self.session is None:
       self.init_session()
@@ -45,7 +45,7 @@ class RestClient(object):
     return headers
 
   def create_objects(self, obj_type, count=1, title_postfix=None, **kwargs):
-    """The method sends HTTP request for objects creation via REST API"""
+    """Send HTTP request for objects creation via REST API"""
     request_body = generate_body_by_template(count=count,
                                              template_name=obj_type,
                                              title_postfix=title_postfix,
@@ -57,12 +57,12 @@ class RestClient(object):
 
 def generate_body_by_template(count, template_name, title_postfix=None,
                               **kwargs):
-  """The function generates list of objects based on object type  (assessment,
-  control, etc) from json templates"""
+  """Generate list of objects based on object type
 
+  Object type can be assessment, control, etc from json templates
+  """
   def upgrade_template(template_name, title_postfix=None, **kwargs):
-    """The function return updated template json with random title by template
-    name"""
+    """Return updated template json with random title by template name"""
     obj_title = append_random_string(template_name)
     if title_postfix is not None:
       obj_title += title_postfix

@@ -13,13 +13,13 @@ import os
 
 
 class TemplateProvider(object):
-  """The class proccesses json templates"""
+  """Proccesses json templates"""
   RELATIVE_PATH_TEMPLATE = "template/{0}.json"
   parsed_data = dict()
 
   @staticmethod
   def get_template_as_dict(obj_type, **kwargs):
-    """The method returns object representation based on json template"""
+    """Return object representation based on json template"""
     try:
       obj = copy.deepcopy(TemplateProvider.parsed_data[obj_type])
     except KeyError:

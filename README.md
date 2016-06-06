@@ -194,7 +194,7 @@ Then you can login into the selenium container and run the tests:
 
 ```
 docker exec -it ggrccore_selenium_1 bash
-python /selenium/src/run_selenium.py
+python /selenium/bin/run_selenium.py
 ```
 
 You should also feel free to check how the `./bin/jenkins/run_selenium` script works.

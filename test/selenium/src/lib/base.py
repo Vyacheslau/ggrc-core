@@ -9,7 +9,6 @@
 
 import re
 
-import time
 from selenium.webdriver.common import keys    # pylint: disable=import-error
 from selenium import webdriver    # pylint: disable=import-error
 
@@ -451,7 +450,6 @@ class Pagination(Component):
     """Selects items count to show per page"""
     self.items_per_page_drop_down_toggle.click()
     self.items_per_page_buttons[items_count].click()
-    time.sleep(3)  # TODO add waiter implementation
 
   def get_page_count(self):
     """Gets displayed page count"""

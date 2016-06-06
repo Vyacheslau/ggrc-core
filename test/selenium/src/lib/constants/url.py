@@ -5,7 +5,7 @@
 
 # pylint: disable=too-few-public-methods
 
-"""App enpoints constants"""
+"""App endpoints constants"""
 
 API = "api"
 DASHBOARD = "dashboard"

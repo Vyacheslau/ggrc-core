@@ -13,6 +13,7 @@ import math
 import random
 
 import pytest
+import time
 
 from lib import base, environment
 from lib.base import Pagination
@@ -62,7 +63,7 @@ class TestAuditPage(base.Test):
     assessments_widget = generic_widget.Assessments(selenium)
     assessments_widget.pagination_control.select_items_per_page(
         expected_items_count)
-
+    time.sleep(3)
     assessments_widget_refreshed = generic_widget.Assessments(selenium)
 
     assert expected_items_count == len(
