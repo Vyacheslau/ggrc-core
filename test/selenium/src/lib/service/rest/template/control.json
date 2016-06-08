@@ -1,0 +1,67 @@
+{
+  "selected": false,
+  "title": null,
+  "slug": "",
+  "description": "",
+  "url": "",
+  "_pending_joins": [
+    {
+      "how": "add",
+      "what": {
+        "name": "Example User",
+        "email": "user@example.com",
+        "contact": null,
+        "owners": null,
+        "custom_attribute_values": [],
+        "related_sources": [],
+        "company": null,
+        "updated_at": "2016-05-18T10:01:48Z",
+        "related_destinations": [],
+        "id": 1,
+        "modified_by": {
+          "id": 1,
+          "href": "/api/people/1",
+          "type": "Person"
+        },
+        "language": null,
+        "created_at": "2016-05-18T10:01:48Z",
+        "object_people": [],
+        "user_roles": [],
+        "context": null,
+        "system_wide_role": "Superuser",
+        "type": "Person",
+        "selfLink": "/api/people/1",
+        "viewLink": "/people/1",
+        "_pending_joins": [],
+        "context_id": null,
+        "href": "/api/people/1"
+      },
+      "through": "owners"
+    }
+  ],
+  "owners": [],
+  "custom_attribute_definitions": [],
+  "custom_attributes": {},
+  "_transient": {},
+  "contact": {
+    "id": 1,
+    "href": "/api/people/1",
+    "type": "Person"
+  },
+  "_transient:title": null,
+  "test_plan": "",
+  "secondary_contact": null,
+  "notes": "",
+  "reference_url": "",
+  "fraud_related": null,
+  "key_control": null,
+  "start_date": "",
+  "end_date": "",
+  "principal_assessor": null,
+  "secondary_assessor": null,
+  "status": "Draft",
+  "kind": null,
+  "means": null,
+  "verify_frequency": null,
+  "context": null
+}
