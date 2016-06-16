@@ -138,6 +138,11 @@ class Audits(Widget):
   _locator = locator.WidgetInfoAudit
 
 
+class AssessmentTemplates(Widget):
+  """Model for assessment templates object info widget"""
+  _locator = locator.WidgetInfoAssessmentTemplate
+
+
 class Assessments(Widget):
   """Model for assessment object info widget"""
   _locator = locator.WidgetInfoAssessment

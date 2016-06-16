@@ -318,3 +318,10 @@ class ProductsModal(BaseModal):
 class ProjectsModal(BaseModal):
   """Class representing a base product modal"""
   _locator_ui_title = locator.ModalCreateNewProject.UI_TITLE
+
+
+class AssessmentTemplatesModal(BaseModal):
+  """Class representing a base assessment templates modal"""
+  _locator_ui_title = locator.ModalCreateAssessmentTemplate.UI_TITLE
+
+

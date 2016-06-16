@@ -10,9 +10,10 @@ import re
 from selenium.common import exceptions
 
 from lib import base
-from lib.page.widget import info_widget
 from lib.constants import locator
 from lib.constants import regex
+from lib.page.modal.map_assessment_templates import MapAssessmentTemplates
+from lib.page.widget import info_widget
 from lib.utils import selenium_utils
 
 
@@ -27,12 +28,12 @@ class Widget(base.Widget):
     self.member_count = None
     self.label_filter = base.Label(driver, self._locator_filter.TITLE)
     self.button_filter_question = base.Button(
-        driver, self._locator_filter.BUTTON_HELP)
+      driver, self._locator_filter.BUTTON_HELP)
     self.filter = base.Filter(
-        driver,
-        self._locator_filter.TEXTFIELD,
-        self._locator_filter.BUTTON_SUBMIT,
-        self._locator_filter.BUTTON_RESET)
+      driver,
+      self._locator_filter.TEXTFIELD,
+      self._locator_filter.BUTTON_SUBMIT,
+      self._locator_filter.BUTTON_RESET)
 
     super(Widget, self).__init__(driver)
     self._set_members_listed()
@@ -40,18 +41,18 @@ class Widget(base.Widget):
   def _set_member_count(self):
     """Parses the widget name and number of items from the widget tab title"""
     widget_label = selenium_utils.get_when_visible(
-        self._driver, self._locator_widget).text
+      self._driver, self._locator_widget).text
 
     # The widget label has 2 forms: "widget_name_plural (number_of_items)"
     # and "number_of_items" and they change depending on how many widgets
     # are open. In order to handle both forms, we first try to parse the
     # first form and only then the second one.
     parsed_label = re.match(
-        regex.WIDGET_TITLE_AND_COUNT, widget_label)
+      regex.WIDGET_TITLE_AND_COUNT, widget_label)
 
     item_count = widget_label \
-        if parsed_label is None \
-        else parsed_label.group(2)
+      if parsed_label is None \
+      else parsed_label.group(2)
     self.member_count = int(item_count)
 
   def _set_members_listed(self):
@@ -62,10 +63,10 @@ class Widget(base.Widget):
     if self.member_count:
       # wait until the elements are loaded
       selenium_utils.get_when_clickable(
-          self._driver, locator.ObjectWidget.MEMBERS_TITLE_LIST)
+        self._driver, locator.ObjectWidget.MEMBERS_TITLE_LIST)
 
       self.members_listed = self._driver.find_elements(
-          *locator.ObjectWidget.MEMBERS_TITLE_LIST)
+        *locator.ObjectWidget.MEMBERS_TITLE_LIST)
     else:
       self.members_listed = []
 
@@ -87,13 +88,13 @@ class Widget(base.Widget):
 
       # wait for the info pane animation to stop
       info_pane = selenium_utils.get_when_clickable(
-          self._driver, locator.ObjectWidget.INFO_PANE)
+        self._driver, locator.ObjectWidget.INFO_PANE)
       selenium_utils.wait_until_stops_moving(info_pane)
 
       return self._info_pane_cls(self._driver)
     except exceptions.StaleElementReferenceException:
       self.members_listed = self._driver.find_elements(
-          *locator.ObjectWidget.MEMBERS_TITLE_LIST)
+        *locator.ObjectWidget.MEMBERS_TITLE_LIST)
       return self.select_nth_member(member)
     except exceptions.TimeoutException:
       # sometimes the click to the listed member results in hover
@@ -106,13 +107,30 @@ class Controls(Widget):
   _locator_widget = locator.WidgetBar.CONTROLS
   _locator_filter = locator.WidgetControls
 
-  def __init__(self, driver,):
+  def __init__(self, driver, ):
     super(Controls, self).__init__(driver)
     self.label_title = base.Label(
-        driver,
-        locator.ObjectWidget.CONTROL_COLUMN_TITLE)
+      driver,
+      locator.ObjectWidget.CONTROL_COLUMN_TITLE)
     self.label_owner = base.Label(driver, locator.ObjectWidget.CONTROL_OWNER)
     self.label_state = base.Label(driver, locator.ObjectWidget.COTNROL_STATE)
+
+
+class AssessmentTemplates(Widget):
+  """Model for the assessment template widget"""
+  _info_pane_cls = info_widget.AssessmentTemplates
+  _locator_widget = locator.WidgetBar.ASSESSMENT_TEMPLATES
+  _locator_filter = locator.WidgetAssessmentTemplates
+
+  def __init__(self, driver):
+    super(AssessmentTemplates, self).__init__(driver)
+    self.map_assessment_templates_button = selenium_utils.get_when_clickable(
+      driver, locator.WidgetAssessmentTemplates.MAP_ASSESSMENT_TEMPLATES_BUTTON)
+
+  def click_on_map_assessment_templates_button(self):
+    """Clicks on Map Assessment Templates (+) button"""
+    self.map_assessment_templates_button.click()
+    return MapAssessmentTemplates(self._driver)
 
 
 class Issues(Widget):

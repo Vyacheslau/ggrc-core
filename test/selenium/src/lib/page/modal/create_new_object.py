@@ -75,3 +75,8 @@ class Products(modal_base.ProductsModal, _CreateNewObjectModal):
 
 class Projects(modal_base.ProjectsModal, _CreateNewObjectModal):
   """Class representing a process modal"""
+
+
+class AssessmentTemplates(modal_base.AssessmentTemplatesModal,
+                          _CreateNewObjectModal):
+  """Class representing an assessment template modal"""

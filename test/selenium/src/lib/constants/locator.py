@@ -407,6 +407,11 @@ class ModalCreateNewObject(BaseModalCreateNew):
       '.confirm-buttons [data-toggle="modal-submit-addmore"]')
 
 
+class ModalCreateAssessmentTemplate(BaseModalCreateNew):
+  """Locators for the request modal visible when creating a new modal from
+  LHN"""
+
+
 class ModalCustomAttribute(object):
   """Locators for a generic custom attributes modal in admin dashboard"""
 
@@ -429,6 +434,13 @@ class ModalCustomAttribute(object):
   BUTTON_SAVE_AND_CLOSE = (
       By.CSS_SELECTOR,
       '.modal-footer .confirm-buttons [data-toggle="modal-submit"]')
+
+
+class ModalMapAssessmentTemplates(object):
+  """Locators for Map Assessment Templates modal window"""
+  CREATE_NEW_ASSESSMENT_TEMPLATE_BUTTON = (
+      By.CSS_SELECTOR,
+      '.modal a[data-object-plural="assessment_templates"]')
 
 
 class WidgetBar(object):
@@ -613,6 +625,10 @@ class WidgetInfoAudit(BaseInfoWidget):
   """Locators for the audit info widget"""
 
 
+class WidgetInfoAssessmentTemplate(BaseInfoWidget):
+  """Locators for the assessment template info widget"""
+
+
 class WidgetInfoAssessment(BaseInfoWidget):
   """Locators for the assessment info widget"""
 
@@ -763,6 +779,13 @@ class BaseWidgetGeneric(object):
 class WidgetControls(BaseWidgetGeneric):
   """Locators for control widget"""
   _object_name = "control"
+
+
+class WidgetAssessmentTemplates(BaseWidgetGeneric):
+  """Locators for assessment templates widget"""
+  _object_name = "assessment_template"
+  MAP_ASSESSMENT_TEMPLATES_BUTTON = (By.CSS_SELECTOR,
+                                     '.section-add .fa-plus-circle')
 
 
 class WidgetProducts(BaseWidgetGeneric):

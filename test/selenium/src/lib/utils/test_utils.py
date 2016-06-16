@@ -168,3 +168,17 @@ class ModalNewProducts(ModalInput):
 
 class ModalNewProjects(ModalInput):
   """Utils for data entry for project modal"""
+
+
+class ModalNewAssessmentTemplates(ModalInput):
+  """Utils for data entry for assessment templates modal"""
+
+  @staticmethod
+  def enter_test_data(modal):
+    """Fills data on Create New Assessment Template Modal
+
+    Args:
+        modal (lib.page.modal.create_new_object.AssessmentTemplates)
+    """
+    modal.enter_title()
+
